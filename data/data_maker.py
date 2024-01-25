@@ -23,3 +23,6 @@ class R2RGraph(object):
         self.shortest_distances = {}
         for scan, G in self.graphs.items():  # compute all shortest paths
             self.shortest_distances[scan] = dict(nx.all_pairs_dijkstra_path_length(G))
+    def get_possible_paths(self,scan_id,start_id,end_id):
+        graph = self.graphs[scan_id]
+        all_paths = list(nx.all_simple_paths(graph, source=start_id, target=end_id))
